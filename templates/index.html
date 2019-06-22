@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block body %}
+<h1>Hello, this is Project1!</h1>
+{% if username %}
+    <i> Not <b>{{ username }}</b>? </i>
+    <form action="{{ url_for('signout') }}">
+        <div class="form-group">
+            <button class="btn btn-primary">Sign out</button>
+        </div>
+    </form>
+
+    <br>
+    <h1>Book Search:</h1>
+    <form action="{{ url_for('book_search') }}" method="post">
+        <div class="form-group">
+            <input class="form-control" name="search_value">
+        </div>
+        <button>Submit</button>
+    </form>
+{% else %}
+    <br>
+    <form action="{{ url_for('sign_in') }}" method="post">
+
+        Username: <br>
+        <input type="text" name="username" value=""> <br>
+        Password: <br>
+        <input type="password" name="password" value=""> <br> <br>
+        <button> Submit </button>
+
+    </form>
+    Don't have an account? <a href="{{ url_for('register_page') }}"> Sign up! </a>
+{% endif %}
+<br>
+
+<br>
+<h2> TODO FEATURES: </h2>
+<ol>
+    <li> <s>Registration</s> </li>
+    <li> <s>Login</s> </li>
+    <li> <s>Logout</s> </li>
+    <li> <s>Import</s> </li>
+    <li> Search </li>
+    <li> Book page </li>
+    <li> Review submission </li>
+    <li> Goodreads review data </li>
+    <li> API Access </li>
+
+</ol>
+{% endblock %}

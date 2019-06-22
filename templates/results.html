@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search results:
+{% endblock %}
+
+{% block body %}
+{% if book_results %}
+    {% for book in book_results %}
+        <ul>
+            <li> <a href="{{ url_for('book', book_isbn=book.isbn) }}">
+                <i>{{ book.title }}</i></a>
+                by <u>{{ book.author }}</u> ... ISBN: {{ book.isbn }}
+            </li>
+        </ul>
+    {% endfor %}
+{% else %}
+    <h1>There were no results.</h1>
+    <a href="{{ url_for('index') }}>" Return to the home page. </a>
+{% endif %}
+{% endblock %}
